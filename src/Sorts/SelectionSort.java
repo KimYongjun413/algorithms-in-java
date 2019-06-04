@@ -7,31 +7,30 @@ public class SelectionSort {
 
         selectionSort(numbers);
 
-        for(int num : numbers) {
+        for (int num : numbers) {
             System.out.print(num + " ");
         }
 
     }
 
     private static void selectionSort(int[] numbers) {
-        int index = 0;
+        int minIndex = 0;
 
-        for(int i =0; i< numbers.length; i++) {
-            index = getMinNumberIndex(numbers, index, i);
-            swap(numbers, index, i);
+        for (int currIndex = 0; currIndex < numbers.length; currIndex++) {
+            minIndex = getMinNumberIndex(numbers, minIndex, currIndex);
+            swap(numbers, minIndex, currIndex);
         }
     }
 
-    private static int getMinNumberIndex(int[] numbers, int index, int i) {
-        int min;
-        min= Integer.MAX_VALUE;
-        for(int j=i; j<numbers.length; j++) {
-           if(numbers[j] < min) {
-               min = numbers[j];
-               index = j;
-           }
+    private static int getMinNumberIndex(int[] numbers, int minIndex, int i) {
+        int min = Integer.MAX_VALUE;
+        for (int currIndex = i; currIndex < numbers.length; currIndex++) {
+            if (numbers[currIndex] < min) {
+                min = numbers[currIndex];
+                minIndex = currIndex;
+            }
         }
-        return index;
+        return minIndex;
     }
 
     private static void swap(int[] numbers, int index, int i) {
