@@ -16,14 +16,19 @@ public class SelectionSort {
                    index = j;
                }
             }
-               temp = numbers[i];
-               numbers[i] = numbers[index];
-               numbers[index] = temp;
+            swap(numbers, index, i);
         }
 
         for(int num : numbers) {
             System.out.print(num + " ");
         }
 
+    }
+
+    private static void swap(int[] numbers, int index, int i) {
+        int temp;
+        temp = numbers[i];
+        numbers[i] = numbers[index];
+        numbers[index] = temp;
     }
 }
