@@ -4,6 +4,7 @@ public class QuickSort {
     public static void main(String[] args) {
 
         int[] numbers = {3, 5, 8, 1, 2, 9, 4, 7, 6};
+
         quickSort(numbers, 0, numbers.length - 1);
 
         showArrayNumbers(numbers);
@@ -18,6 +19,12 @@ public class QuickSort {
 
     public static void quickSort(int[] numbers, int start, int end) {
         if (start >= end) return;
+        int r = getPivotIndex(numbers, start, end);
+        quickSort(numbers, start, r);
+        quickSort(numbers, r + 1, end);
+    }
+
+    public static int getPivotIndex(int[] numbers, int start, int end) {
         int l = start;
         int r = end - 1;
         int p = end;
@@ -30,8 +37,7 @@ public class QuickSort {
                 swap(numbers, p, l);
             }
         }
-        quickSort(numbers, start, r);
-        quickSort(numbers, r + 1, end);
+        return r;
     }
 
     public static void swap(int[] numbers, int i, int j) {
