@@ -31,13 +31,17 @@ public class QuickSort {
         while (l <= r) {
             while (l <= end && numbers[l] <= numbers[p]) l++;
             while (r > start && numbers[r] >= numbers[p]) r--;
-            if (l < r) {
-                swap(numbers, l, r);
-            } else if (l == r) {
-                swap(numbers, p, l);
-            }
+            selectSwapIndex(numbers, l, r, p);
         }
         return r;
+    }
+
+    public static void selectSwapIndex(int[] numbers, int l, int r, int p) {
+        if (l < r) {
+            swap(numbers, l, r);
+        } else if (l == r) {
+            swap(numbers, p, l);
+        }
     }
 
     public static void swap(int[] numbers, int i, int j) {
