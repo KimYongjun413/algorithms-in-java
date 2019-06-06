@@ -4,7 +4,7 @@ public class QuickSort {
     public static void main(String[] args) {
 
         int[] numbers = {3, 5, 8, 1, 2, 9, 4, 7, 6};
-
+        showArrayNumbers(numbers);
         quickSort(numbers, 0, numbers.length - 1);
 
         showArrayNumbers(numbers);
@@ -30,9 +30,9 @@ public class QuickSort {
         int p = end;
         while (l <= r) {
             while (l <= end && numbers[l] <= numbers[p]) l++;
-            while (r > start && numbers[r] >= numbers[p]) r--;
+            while (r > l && numbers[r] >= numbers[p]) r--;
             selectSwapIndex(numbers, l, r, p);
-        }
+         }
         return r;
     }
 

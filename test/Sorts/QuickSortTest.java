@@ -17,6 +17,9 @@ public class QuickSortTest {
 
         quickSort.quickSort(numbers2, 0, numbers2.length - 1);
         assertArrayEquals(new int[]{1, 2, 2, 3, 4}, numbers2);
+
+        int[] numbers3 = {3, 5, 4, 1, 2, 9, 8, 7, 6};
+        assertEquals(5, quickSort.getPivotIndex(numbers3, 0, numbers3.length - 1));
     }
 
     @Test
