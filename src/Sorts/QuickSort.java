@@ -20,7 +20,7 @@ public class QuickSort {
     public static void quickSort(int[] numbers, int start, int end) {
         if (start >= end) return;
         int r = getPivotIndex(numbers, start, end);
-        quickSort(numbers, start, r);
+        quickSort(numbers, start, r - 1);
         quickSort(numbers, r + 1, end);
     }
 
@@ -28,18 +28,21 @@ public class QuickSort {
         int l = start;
         int r = end - 1;
         int p = end;
-        while (l <= r) {
-            while (l <= end && numbers[l] <= numbers[p]) l++;
+        if (l == r) {
+            selectSwapIndex(numbers, l, r, p);
+        }
+        while (l < r) {
+            while (l <= end && numbers[l] < numbers[p]) l++;
             while (r > l && numbers[r] >= numbers[p]) r--;
             selectSwapIndex(numbers, l, r, p);
-         }
-        return r;
+        }
+        return l == p ? p : r;
     }
 
     public static void selectSwapIndex(int[] numbers, int l, int r, int p) {
         if (l < r) {
             swap(numbers, l, r);
-        } else if (l == r) {
+        } else {
             swap(numbers, p, l);
         }
     }
