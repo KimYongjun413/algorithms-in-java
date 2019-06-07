@@ -21,7 +21,7 @@ public class QuickSort {
         if (start >= end) return;
         int r = getPivotIndex(numbers, start, end);
         quickSort(numbers, start, r - 1);
-        quickSort(numbers, r + 1, end);
+        quickSort(numbers, r+1, end);
     }
 
     public static int getPivotIndex(int[] numbers, int start, int end) {
