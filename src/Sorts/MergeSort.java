@@ -27,14 +27,14 @@ public class MergeSort {
         int rightIdx = mid + 1;
 
         while (leftIdx <= mid && rightIdx <= end) {
-            if(temp[leftIdx] < temp[rightIdx]) {
+            if (temp[leftIdx] < temp[rightIdx]) {
                 numbers[sortIdx++] = temp[leftIdx++];
             } else {
                 numbers[sortIdx++] = temp[rightIdx++];
             }
         }
 
-        while(leftIdx <= mid) {
+        while (leftIdx <= mid) {
             numbers[sortIdx++] = temp[leftIdx++];
         }
 
