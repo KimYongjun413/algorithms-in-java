@@ -12,15 +12,15 @@ public class QuickSortTest {
     public void quickSort() {
 
         int[] numbers1 = {2, 1, 3};
-        int[] numbers2 = {2, 1, 2, 3, 4};
         quickSort.quickSort(numbers1, 0, numbers1.length - 1);
         assertArrayEquals(new int[]{1, 2, 3}, numbers1);
 
+        int[] numbers2 = {2, 1, 2, 3, 4};
         quickSort.quickSort(numbers2, 0, numbers2.length - 1);
         assertArrayEquals(new int[]{1, 2, 2, 3, 4}, numbers2);
 
         int[] numbers3 = {3, 5, 4, 1, 2, 9, 8, 7, 6};
-        assertEquals(5, quickSort.getPivotIndex(numbers3, 0, numbers3.length - 1));
+        assertEquals(2, quickSort.getPivotIndex(numbers3, 0, numbers3.length - 1));
     }
 
     @Test

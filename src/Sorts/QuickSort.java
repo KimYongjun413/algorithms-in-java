@@ -21,31 +21,23 @@ public class QuickSort {
         if (start >= end) return;
         int r = getPivotIndex(numbers, start, end);
         quickSort(numbers, start, r - 1);
-        quickSort(numbers, r+1, end);
+        quickSort(numbers, r, end);
     }
 
     public static int getPivotIndex(int[] numbers, int start, int end) {
-        int l = start;
-        int r = end - 1;
-        int p = end;
-        if (l == r) {
-            selectSwapIndex(numbers, l, r, p);
+        int pivot = numbers[(start + end) / 2];
+        while (start <= end) {
+            while (numbers[start] < pivot) start++;
+            while (numbers[end] > pivot) end--;
+            if (start <= end) {
+                swap(numbers, start, end);
+                start++;
+                end--;
+            }
         }
-        while (l < r) {
-            while (l <= end && numbers[l] < numbers[p]) l++;
-            while (r > l && numbers[r] >= numbers[p]) r--;
-            selectSwapIndex(numbers, l, r, p);
-        }
-        return l == p ? p : r;
+        return start;
     }
 
-    public static void selectSwapIndex(int[] numbers, int l, int r, int p) {
-        if (l < r) {
-            swap(numbers, l, r);
-        } else {
-            swap(numbers, p, l);
-        }
-    }
 
     public static void swap(int[] numbers, int i, int j) {
         int temp = numbers[i];
