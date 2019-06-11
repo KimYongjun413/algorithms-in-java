@@ -4,23 +4,22 @@ public class MergeSort {
     public static void main(String[] args) {
 
         int numbers[] = {6, 4, 3, 7, 5, 1, 2};
+        int[] temp = new int[numbers.length];
         showArray(numbers);
-        mergeSort(numbers, 0, numbers.length - 1);
+        mergeSort(numbers, temp, 0, numbers.length - 1);
 
         showArray(numbers);
     }
 
-    public static void mergeSort(int[] numbers, int start, int end) {
+    public static void mergeSort(int[] numbers, int[] temp, int start, int end) {
         if (start == end) return;
         int mid = start + (end - start) / 2;
-        mergeSort(numbers, start, mid);
-        mergeSort(numbers, mid + 1, end);
-        doMerge(numbers, start, mid, end);
-        showArray(numbers);
+        mergeSort(numbers, temp, start, mid);
+        mergeSort(numbers, temp, mid + 1, end);
+        doMerge(numbers, temp, start, mid, end);
     }
 
-    public static void doMerge(int[] numbers, int start, int mid, int end) {
-        int[] temp = new int[numbers.length];
+    public static void doMerge(int[] numbers, int[] temp, int start, int mid, int end) {
         System.arraycopy(numbers, start, temp, start, end - start + 1);
         int leftIdx = start;
         int sortIdx = start;
