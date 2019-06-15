@@ -1,27 +1,28 @@
 package Sorts;
 
-public class InsertionSort {
+public class InsertionSort implements Sort {
     public static void main(String[] args) {
 
-        int[] numbers = {6, 1, 7, 8, 9, 3, 5, 4, 2};
+        Integer[] integers = {6, 1, 7, 8, 9, 3, 5, 4, 2};
 
-        insertionSort(numbers);
+        InsertionSort insertionSort = new InsertionSort();
+        insertionSort.sort(integers);
 
-        for (int num : numbers) {
-            System.out.print(num + " ");
-        }
+        printArray(integers);
     }
 
-    public static void insertionSort(int[] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            findProperLocation(numbers, i);
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        for (int i = 0; i < array.length; i++) {
+            findProperLocation(array, i);
         }
+        return array;
     }
 
-    public static void findProperLocation(int[] numbers, int i) {
+    public static <T extends Comparable<T>> void findProperLocation(T[] numbers, int i) {
         int j = i + 1;
         while (j > 0 && j < numbers.length) {
-            if (numbers[j - 1] > numbers[j]) {
+            if (numbers[j - 1].compareTo(numbers[j]) > 0 ) {
                 swap(numbers, j - 1, j);
             }
             j--;
@@ -29,9 +30,16 @@ public class InsertionSort {
     }
 
 
-    public static void swap(int[] numbers, int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static <T> void printArray(T[] array) {
+        for (T arr : array) {
+            System.out.print(arr + " ");
+        }
+        System.out.println();
     }
 }
