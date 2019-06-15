@@ -8,7 +8,7 @@ public class BubbleSort implements Sort {
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(integers);
 
-        showArray(integers);
+        printArray(integers);
     }
 
     @Override
@@ -23,13 +23,13 @@ public class BubbleSort implements Sort {
         return array;
     }
 
-    public static <T> void swap(T[] numbers, int i, int j) {
-        T temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
-    public static <T> void showArray(T[] array) {
+    public static <T> void printArray(T[] array) {
         for (T arr : array) {
             System.out.print(arr + " ");
         }
