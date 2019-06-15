@@ -12,7 +12,8 @@ public class SortTest {
                 new BubbleSort(),
                 new HeapSort(),
                 new InsertionSort(),
-                new MergeSort()
+                new MergeSort(),
+                new QuickSort()
         };
 
         Integer[] unsorted = {5, 9, 3, 1, 2, 8, 4, 7, 6};
