@@ -1,29 +1,32 @@
 package Sorts;
 
-public class HeapSort {
+public class HeapSort implements Sort {
     public static void main(String[] args) {
-        int[] numbers = {5, 2, 7, 3, 6, 1, 4};
+        Integer[] integers = {5, 2, 7, 3, 6, 1, 4};
 
-        heapSort(numbers);
+        HeapSort heapSort = new HeapSort();
+        heapSort.sort(integers);
 
-        showArray(numbers);
+        printArray(integers);
     }
 
-    public static void heapSort(int[] numbers) {
-        makeMaxHeap(numbers, numbers.length - 1);
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        makeMaxHeap(array, array.length - 1);
 
-        for (int i = numbers.length - 1; i >= 0; i--) {
-            swap(numbers, 0, i);
-            makeMaxHeap(numbers, i-1);
+        for (int i = array.length - 1; i >= 0; i--) {
+            swap(array, 0, i);
+            makeMaxHeap(array, i-1);
         }
+        return array;
     }
 
-    public static void makeMaxHeap(int[] heap, int length) {
+    public static <T extends Comparable<T>> void makeMaxHeap(T[] heap, int length) {
         for (int i = 1; i <= length; i++) {
             int c = i;
             do {
                 int root = (c - 1) / 2;
-                if (heap[root] < heap[c]) {
+                if (heap[root].compareTo(heap[c])<0) {
                     swap(heap, root, c);
                 }
                 c = root;
@@ -31,15 +34,15 @@ public class HeapSort {
         }
     }
 
-    public static void swap(int[] heap, int root, int c) {
-        int temp = heap[root];
-        heap[root] = heap[c];
-        heap[c] = temp;
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
-    public static void showArray(int[] numbers) {
-        for (int num : numbers) {
-            System.out.print(num + " ");
+    public static <T> void printArray(T[] array) {
+        for (T arr : array) {
+            System.out.print(arr + " ");
         }
         System.out.println();
     }
