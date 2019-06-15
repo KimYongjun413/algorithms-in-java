@@ -1,35 +1,37 @@
 package Sorts;
 
-public class BubbleSort {
+public class BubbleSort implements Sort {
     public static void main(String[] args) {
 
-        int[] numbers = {5, 9, 3, 1, 2, 8, 4, 7, 6};
+        Integer[] integers  = {5, 9, 3, 1, 2, 8, 4, 7, 6};
 
-        bubbleSort(numbers);
+        BubbleSort bubbleSort = new BubbleSort();
+        bubbleSort.sort(integers);
 
-        showArray(numbers);
+        showArray(integers);
     }
 
-    public static void bubbleSort(int[] numbers) {
-
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = numbers.length - 1; j > i; j--) {
-                if (numbers[j] < numbers[j - 1]) {
-                    swap(numbers, j, j - 1);
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = array.length - 1; j > i; j--) {
+                if (array[j].compareTo(array[j - 1])<0) {
+                    swap(array, j, j - 1);
                 }
             }
         }
+        return array;
     }
 
-    public static void swap(int[] numbers, int i, int j) {
-        int temp = numbers[i];
+    public static <T> void swap(T[] numbers, int i, int j) {
+        T temp = numbers[i];
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
 
-    public static void showArray(int[] numbers) {
-        for (int num : numbers) {
-            System.out.print(num + " ");
+    public static <T> void showArray(T[] array) {
+        for (T arr : array) {
+            System.out.print(arr + " ");
         }
         System.out.println();
     }
