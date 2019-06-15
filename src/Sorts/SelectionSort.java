@@ -1,42 +1,49 @@
 package Sorts;
 
-public class SelectionSort {
+public class SelectionSort implements Sort {
     public static void main(String[] args) {
 
-        int[] numbers = {12, 4, 5, 7, 8, 6, 10, 11, 18, 20};
+        Integer[] integers = {12, 4, 5, 7, 8, 6, 10, 11, 18, 20};
 
-        selectionSort(numbers);
+        SelectionSort selectionSort = new SelectionSort();
+        selectionSort.sort(integers);
 
-        for (int num : numbers) {
-            System.out.print(num + " ");
-        }
+        printArray(integers);
 
     }
 
-    private static void selectionSort(int[] numbers) {
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
         int minIndex = 0;
 
-        for (int currIndex = 0; currIndex < numbers.length; currIndex++) {
-            minIndex = getMinNumberIndex(numbers, minIndex, currIndex);
-            swap(numbers, minIndex, currIndex);
+        for (int currIndex = 0; currIndex < array.length; currIndex++) {
+            minIndex = getMinNumberIndex(array, minIndex, currIndex);
+            swap(array, minIndex, currIndex);
         }
+        return array;
     }
 
-    private static int getMinNumberIndex(int[] numbers, int minIndex, int i) {
-        int min = Integer.MAX_VALUE;
-        for (int currIndex = i; currIndex < numbers.length; currIndex++) {
-            if (numbers[currIndex] < min) {
-                min = numbers[currIndex];
+    private static <T extends Comparable<T>> int getMinNumberIndex(T[] array, int minIndex, int i) {
+        Integer min = Integer.MAX_VALUE;
+        for (int currIndex = i; currIndex < array.length; currIndex++) {
+            if (array[currIndex].compareTo((T) min) < 0) {
+                min = (Integer) array[currIndex];
                 minIndex = currIndex;
             }
         }
         return minIndex;
     }
 
-    private static void swap(int[] numbers, int index, int i) {
-        int temp;
-        temp = numbers[i];
-        numbers[i] = numbers[index];
-        numbers[index] = temp;
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static <T> void printArray(T[] array) {
+        for (T arr : array) {
+            System.out.print(arr + " ");
+        }
+        System.out.println();
     }
 }
