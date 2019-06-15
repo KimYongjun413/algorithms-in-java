@@ -13,7 +13,8 @@ public class SortTest {
                 new HeapSort(),
                 new InsertionSort(),
                 new MergeSort(),
-                new QuickSort()
+                new QuickSort(),
+                new SelectionSort()
         };
 
         Integer[] unsorted = {5, 9, 3, 1, 2, 8, 4, 7, 6};
