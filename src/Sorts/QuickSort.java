@@ -1,34 +1,34 @@
 package Sorts;
 
-public class QuickSort {
+public class QuickSort implements Sort {
     public static void main(String[] args) {
 
-        int[] numbers = {3, 5, 8, 1, 2, 9, 4, 7, 6};
-        showArrayNumbers(numbers);
-        quickSort(numbers, 0, numbers.length - 1);
+        Integer[] integers = {3, 5, 8, 1, 2, 9, 4, 7, 6};
 
-        showArrayNumbers(numbers);
+        QuickSort quickSort = new QuickSort();
+        quickSort.sort(integers);
+
+        printArray(integers);
     }
 
-    public static void showArrayNumbers(int[] numbers) {
-        for (int num : numbers) {
-            System.out.print(num + " ");
-        }
-        System.out.println();
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] array) {
+        quickSort(array, 0, array.length - 1);
+        return array;
     }
 
-    public static void quickSort(int[] numbers, int start, int end) {
+    public static <T extends Comparable<T>> void quickSort(T[] array, int start, int end) {
         if (start >= end) return;
-        int r = getPivotIndex(numbers, start, end);
-        quickSort(numbers, start, r - 1);
-        quickSort(numbers, r, end);
+        int r = getPivotIndex(array, start, end);
+        quickSort(array, start, r - 1);
+        quickSort(array, r, end);
     }
 
-    public static int getPivotIndex(int[] numbers, int start, int end) {
-        int pivot = numbers[(start + end) / 2];
+    public static <T extends Comparable<T>> int getPivotIndex(T[] numbers, int start, int end) {
+        T pivot = numbers[(start + end) / 2];
         while (start <= end) {
-            while (numbers[start] < pivot) start++;
-            while (numbers[end] > pivot) end--;
+            while (numbers[start].compareTo(pivot) < 0) start++;
+            while (numbers[end].compareTo(pivot) > 0) end--;
             if (start <= end) {
                 swap(numbers, start, end);
                 start++;
@@ -39,9 +39,16 @@ public class QuickSort {
     }
 
 
-    public static void swap(int[] numbers, int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+    public static <T> void swap(T[] array, int i, int j) {
+        T temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static <T> void printArray(T[] array) {
+        for (T arr : array) {
+            System.out.print(arr + " ");
+        }
+        System.out.println();
     }
 }
