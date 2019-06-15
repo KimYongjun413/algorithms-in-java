@@ -10,7 +10,8 @@ public class SortTest {
     public void SortAlgorithmTest() {
         Sort[] sorts = {
                 new BubbleSort(),
-                new HeapSort()
+                new HeapSort(),
+                new InsertionSort()
         };
 
         Integer[] unsorted = {5, 9, 3, 1, 2, 8, 4, 7, 6};
