@@ -1,5 +1,7 @@
 package Sorts;
 
+import static Sorts.SortUtils.*;
+
 public class HeapSort implements Sort {
     public static void main(String[] args) {
         Integer[] integers = {5, 2, 7, 3, 6, 1, 4};
@@ -32,18 +34,5 @@ public class HeapSort implements Sort {
                 c = root;
             } while (c != 0);
         }
-    }
-
-    public static <T> void swap(T[] array, int i, int j) {
-        T temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-
-    public static <T> void printArray(T[] array) {
-        for (T arr : array) {
-            System.out.print(arr + " ");
-        }
-        System.out.println();
     }
 }

@@ -1,5 +1,7 @@
 package Sorts;
 
+import static Sorts.SortUtils.*;
+
 public class MergeSort implements Sort {
     public static void main(String[] args) {
 
@@ -48,12 +50,5 @@ public class MergeSort implements Sort {
             numbers[sortIdx++] = temp[rightIdx++];
         }
 
-    }
-
-    public static <T> void printArray(T[] array) {
-        for (T arr : array) {
-            System.out.print(arr + " ");
-        }
-        System.out.println();
     }
 }
