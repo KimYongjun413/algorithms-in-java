@@ -19,6 +19,13 @@ public class Example_1_2Test {
         assertTrue(test.isPermutation("Aaa b","aaAb "));
 
 
+        assertFalse(test.permutation("abcd","abc"));
+        assertFalse(test.permutation("Aaa b","Aaab"));
+
+        assertTrue(test.permutation("abc","abc"));
+        assertTrue(test.permutation("abc","bca"));
+        assertTrue(test.permutation("Aaa b","aaAb "));
+
     }
 
 
